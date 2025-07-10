@@ -2,43 +2,49 @@ import streamlit as st
 import pandas as pd
 import re
 
-# Injeta CSS customizado para estilo elegante e sóbrio
+# Injeta CSS customizado para estilo elegante, sóbrio e neutro
 st.markdown(
     """
     <style>
     /* Fonte principal, cores e espaçamentos */
     .title {
-        color: #34495E; /* azul acinzentado */
+        color: #222222; /* cinza escuro quase preto */
         font-family: 'Georgia', serif;
         font-size: 38px;
         font-weight: 600;
         margin-bottom: 0.3em;
     }
     .subtitle {
-        color: #5D6D7E;
+        color: #555555; /* cinza médio */
         font-family: 'Georgia', serif;
         font-size: 20px;
         margin-bottom: 1em;
     }
-    /* Labels do formulário */
     label {
         font-weight: 500;
         font-family: 'Georgia', serif;
-        color: #2C3E50;
+        color: #222222;
     }
-    /* Fundo e bordas */
     .stApp {
-        background-color: #F7F9FC;
-        color: #2C3E50;
+        background-color: #FAFAFA; /* quase branco */
+        color: #222222;
         padding: 1.5rem 2rem;
         max-width: 900px;
         margin: auto;
     }
-    /* Espaçamento entre linhas do formulário */
     div.row-widget.stTextInput > label {
         font-weight: 500;
         margin-bottom: 0.1rem;
         display: block;
+    }
+    /* Ajustes para mensagens de sucesso e erro */
+    .stSuccess {
+        color: #1A3E5D !important; /* azul escuro */
+        font-weight: 600;
+    }
+    .stError {
+        color: #8B0000 !important; /* vermelho escuro */
+        font-weight: 600;
     }
     </style>
     """,
@@ -108,9 +114,9 @@ if submit:
 
 # Exibir inventário com título
 if st.session_state["entries"]:
-    st.markdown('<h2 style="color:#34495E; font-family:Georgia, serif; margin-top: 2rem;">Registered Artworks</h2>', unsafe_allow_html=True)
+    st.markdown('<h2 style="color:#222222; font-family:Georgia, serif; margin-top: 2rem;">Registered Artworks</h2>', unsafe_allow_html=True)
     df = pd.DataFrame(st.session_state["entries"])
     st.dataframe(df, use_container_width=True)
 
     csv = df.to_csv(index=False).encode("utf-8")
-    st.download_button("📥 Download CSV", data=csv, file_name="artwork_inventory.csv", mime="text/csv")
+    st.download_button("📥 Download CSV", data=csv, file_name="a
