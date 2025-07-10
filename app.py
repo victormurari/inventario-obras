@@ -119,4 +119,5 @@ if st.session_state["entries"]:
     st.dataframe(df, use_container_width=True)
 
     csv = df.to_csv(index=False).encode("utf-8")
-    st.download_button("📥 Download CSV", data=csv, file_name="a
+    st.download_button("📥 Download CSV", data=csv, file_name="artwork_inventory.csv", mime="text/csv")
+
